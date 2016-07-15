@@ -2,14 +2,15 @@
   "name": "bitgeo",
   "version": "0.0.0",
   "main": "index.js",
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "lab --threshold 99 test"
+  },
   "devDependencies": {
     "code": "^3.0.1",
     "lab": "^10.9.0"
   },
   "eslintConfig": {
-    "extend": "tschaub",
-    "parserOptions": {
-      "ecmaVersion": 6
-    }
+    "extend": "tschaub"
   }
 }
