@@ -42,9 +42,8 @@ BitBox.prototype.fill = function(i0, j0, width, height) {
       var offset = j * this.width + i;
       var index = (offset / BITS_PER_VALUE) | 0;
       var bit = offset % BITS_PER_VALUE;
-      var fill;
+      var fill = ii - i;
       if (bit === 0) {
-        fill = ii - i;
         if (fill >= BITS_PER_VALUE) {
           fill = BITS_PER_VALUE;
           storage[index] = -1;
@@ -52,7 +51,9 @@ BitBox.prototype.fill = function(i0, j0, width, height) {
           storage[index] |= (1 << fill) - 1
         }
       } else {
-        fill = BITS_PER_VALUE - bit;
+        if (fill + bit >= BITS_PER_VALUE) {
+          fill = BITS_PER_VALUE - bit;
+        }
         storage[index] |= ((1 << fill) - 1) << bit;
       }
       i += fill;

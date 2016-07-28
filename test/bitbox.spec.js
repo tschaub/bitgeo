@@ -197,4 +197,16 @@ lab.experiment('#fill()', () => {
     done();
   });
 
+  lab.test('sets a strip of bits', done => {
+    const bitbox = new BitBox({width: 4, height: 4});
+    bitbox.fill(1, 1, 2, 1);
+    expect(bitbox.get(0, 0)).to.be.false();
+    expect(bitbox.get(1, 0)).to.be.false();
+    expect(bitbox.get(1, 1)).to.be.true();
+    expect(bitbox.get(2, 1)).to.be.true();
+    expect(bitbox.get(3, 1)).to.be.false();
+    expect(bitbox.get(0, 2)).to.be.false();
+    done();
+  });
+
 });
