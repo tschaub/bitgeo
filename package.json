@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "lab --threshold 99 test"
+    "test": "lab --threshold 95 test"
   },
   "devDependencies": {
     "code": "^3.0.1",
