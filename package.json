@@ -8,9 +8,10 @@
   },
   "devDependencies": {
     "code": "^3.0.1",
+    "eslint-config-tschaub": "^5.0.0",
     "lab": "^10.9.0"
   },
   "eslintConfig": {
-    "extend": "tschaub"
+    "extends": "tschaub"
   }
 }
