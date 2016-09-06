@@ -4,13 +4,18 @@
   "main": "index.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "lab --threshold 95 test"
+    "test-lib": "lab test/lib",
+    "test-integration": "lab test/integration.test.js",
+    "test": "npm run test-lib && npm run test-integration"
   },
   "devDependencies": {
     "code": "^3.0.1",
-    "lab": "^10.9.0"
+    "eslint-config-tschaub": "^5.0.0",
+    "lab": "^10.9.0",
+    "pixelmatch": "^4.0.2",
+    "pngjs": "^3.0.0"
   },
   "eslintConfig": {
-    "extend": "tschaub"
+    "extends": "tschaub"
   }
 }
