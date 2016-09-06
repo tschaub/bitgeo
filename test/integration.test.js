@@ -28,7 +28,7 @@ lab.experiment('integration', () => {
 
       const actualPNG = util.createPNG(bits);
       const diffPNG = new PNG({width: width, height: height});
-      const mismatch = match(actualPNG, expectedPNG, diffPNG.data, width, height);
+      const mismatch = match(actualPNG.data, expectedPNG.data, diffPNG.data, width, height);
       if (mismatch) {
         const diff = path.join(images, path.basename(entry, '.js') + '.diff.png');
         diffPNG.pack().pipe(fs.createWriteStream(diff));

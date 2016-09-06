@@ -16,6 +16,11 @@ exports.createPNG = function(bitbox) {
     }
   });
 
+  // force alpha 1 so test work without writing png first
+  for (let index = 0, length = png.data.length; index < length; index += 4) {
+    png.data[index + 3] = 255;
+  }
+
   bitbox.forEach((i, j) => {
     if (bitbox.get(i, j)) {
       var col = i - bitbox.minI;
