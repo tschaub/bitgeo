@@ -1,4 +1,4 @@
-const {sortAndMerge, or} = require('../lib/ranges');
+const {sortAndMerge, and, or} = require('../../lib/ranges');
 const expect = require('code').expect;
 const lab = exports.lab = require('lab').script();
 
@@ -44,6 +44,28 @@ lab.experiment('or()', () => {
     const ranges = or(ranges1, ranges2);
     expect(ranges).to.equal([1, 9, 11, 25, 30, 32]);
     expect(or(ranges2, ranges1)).to.equal(ranges);
+    done();
+  });
+
+});
+
+lab.experiment('and()', () => {
+
+  lab.test('returns the intersection of overlapping range sets', done => {
+    const ranges1 = [1, 9, 11, 25];
+    const ranges2 = [6, 6, 14, 14, 16, 18, 30, 32];
+    const ranges = and(ranges1, ranges2);
+    expect(ranges).to.equal([6, 6, 14, 14, 16, 18]);
+    expect(and(ranges2, ranges1)).to.equal(ranges);
+    done();
+  });
+
+  lab.test('returns the an empty set for distinct ranges', done => {
+    const ranges1 = [1, 3, 10, 12];
+    const ranges2 = [6, 6, 16, 18, 30, 32];
+    const ranges = and(ranges1, ranges2);
+    expect(ranges).to.equal([]);
+    expect(and(ranges2, ranges1)).to.equal(ranges);
     done();
   });
 

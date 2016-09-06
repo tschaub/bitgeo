@@ -1,6 +1,6 @@
 const expect = require('code').expect;
 const lab = exports.lab = require('lab').script();
-const prepare = require('../lib/segments').prepare;
+const prepare = require('../../lib/segments').prepare;
 
 lab.experiment('prepare()', () => {
 
