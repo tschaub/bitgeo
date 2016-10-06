@@ -18,6 +18,8 @@ lab.experiment('integration', () => {
     lab.test(entry, done => {
       const factory = require(path.join(fixtures, entry));
       const bits = factory();
+      expect(bits.getArea()).to.be.about(factory.area, 1e-5);
+
       const width = bits.maxI + 1 - bits.minI;
       const height = bits.maxJ + 1 - bits.minJ;
 
