@@ -1,6 +1,6 @@
 const bitgeo = require('../../lib/index');
 
-module.exports = function() {
+exports = module.exports = function() {
   const ring = [];
   ring.push([0, 0]);
   for (let i = 20; i <= 90; i += 5) {
@@ -21,3 +21,5 @@ module.exports = function() {
     resolution: 0.25
   });
 };
+
+exports.area = 5888.25;

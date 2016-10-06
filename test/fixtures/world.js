@@ -1,6 +1,8 @@
 const bitgeo = require('../../lib/index');
 const data = require('../data/world.json');
 
-module.exports = function() {
+exports = module.exports = function() {
   return bitgeo(data, {resolution: 0.5});
 };
+
+exports.area = 40319;

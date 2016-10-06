@@ -1,6 +1,8 @@
 const bitgeo = require('../../lib/index');
 const data = require('../data/mt.json');
 
-module.exports = function() {
+exports = module.exports = function() {
   return bitgeo(data, {resolution: 0.025});
 };
+
+exports.area = 1810;
