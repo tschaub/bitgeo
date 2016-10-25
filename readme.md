@@ -1,8 +1,12 @@
-# bitgeo
+# `bitgeo`
 
 Transforms any GeoJSON into a data structure that can be efficiently queried to determine (roughly) where data is present or absent.
 
 ## API
+
+```js
+var bitgeo = require('bitgeo');
+```
 
 ### `bitgeo(data, options)`
 
@@ -12,15 +16,19 @@ Supported options:
 
  * `resolution` - The size (width and height) of a "cell" in the same units as the input data.
 
-### `or(datas, options)`
+### `bitgeo.or(datas, options)`
 
 A convenience function for creating a bitbox that is the union of an array of GeoJSON data objects.
 
-### `and(datas, options)`
+### `bitgeo.and(datas, options)`
 
 A convenience function for creating a bitbox that is the intersection of an array of GeoJSON data objects.
 
 ### `BitBox`
+
+```js
+var bitbox = bitgeo(data, options);
+```
 
 A bitbox is a (conceptually) rasterized representation of vector data containing information about where data is present and absent.
 
