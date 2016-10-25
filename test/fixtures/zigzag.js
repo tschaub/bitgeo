@@ -22,4 +22,4 @@ exports = module.exports = function() {
   });
 };
 
-exports.area = 5888.25;
+exports.area = 1472.0625;

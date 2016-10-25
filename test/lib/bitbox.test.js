@@ -62,6 +62,25 @@ lab.experiment('#minJ', () => {
 
 });
 
+lab.experiment('#getArea()', () => {
+
+  lab.test('provides access to width', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 20,
+      minJ: -10, maxJ: 10,
+      ranges: {
+        1: [1, 1, 12, 20], // 10 bits
+        3: [2, 10, 15, 15] // 10 bits
+      },
+      resolution: 10
+    });
+    expect(bitbox.getArea()).to.equal(2000);
+    done();
+  });
+
+
+});
+
 lab.experiment('#maxJ', () => {
 
   lab.test('provides access to width', done => {
