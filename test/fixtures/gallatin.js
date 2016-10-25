@@ -5,4 +5,4 @@ exports = module.exports = function() {
   return bitgeo(data, {resolution: 0.005});
 };
 
-exports.area = 158.24;
+exports.area = 0.7912;
