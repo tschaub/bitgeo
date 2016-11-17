@@ -19,7 +19,7 @@ lab.experiment('constructor', () => {
 
 lab.experiment('#minI', () => {
 
-  lab.test('provides access to x0', done => {
+  lab.test('provides access to minI', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
@@ -34,7 +34,7 @@ lab.experiment('#minI', () => {
 
 lab.experiment('#maxI', () => {
 
-  lab.test('provides access to x0', done => {
+  lab.test('provides access to maxI', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
@@ -49,7 +49,7 @@ lab.experiment('#maxI', () => {
 
 lab.experiment('#minJ', () => {
 
-  lab.test('provides access to width', done => {
+  lab.test('provides access to minJ', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
@@ -57,6 +57,21 @@ lab.experiment('#minJ', () => {
       resolution: 1
     });
     expect(bitbox.minJ).to.equal(-10);
+    done();
+  });
+
+});
+
+lab.experiment('#maxJ', () => {
+
+  lab.test('provides access to maxJ', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 20,
+      minJ: -10, maxJ: 10,
+      ranges: {},
+      resolution: 1
+    });
+    expect(bitbox.maxJ).to.equal(10);
     done();
   });
 
