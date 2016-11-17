@@ -9,6 +9,7 @@ lab.experiment('constructor', () => {
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 1
     });
     expect(bitbox).to.be.an.instanceof(BitBox);
@@ -19,11 +20,12 @@ lab.experiment('constructor', () => {
 
 lab.experiment('#minI', () => {
 
-  lab.test('provides access to x0', done => {
+  lab.test('provides access to minI', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 1
     });
     expect(bitbox.minI).to.equal(0);
@@ -34,11 +36,12 @@ lab.experiment('#minI', () => {
 
 lab.experiment('#maxI', () => {
 
-  lab.test('provides access to x0', done => {
+  lab.test('provides access to maxI', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 1
     });
     expect(bitbox.maxI).to.equal(20);
@@ -49,14 +52,31 @@ lab.experiment('#maxI', () => {
 
 lab.experiment('#minJ', () => {
 
-  lab.test('provides access to width', done => {
+  lab.test('provides access to minJ', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 1
     });
     expect(bitbox.minJ).to.equal(-10);
+    done();
+  });
+
+});
+
+lab.experiment('#maxJ', () => {
+
+  lab.test('provides access to maxJ', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 20,
+      minJ: -10, maxJ: 10,
+      ranges: {},
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.maxJ).to.equal(10);
     done();
   });
 
@@ -72,6 +92,7 @@ lab.experiment('#getArea()', () => {
         1: [1, 1, 12, 20], // 10 bits
         3: [2, 10, 15, 15] // 10 bits
       },
+      origin: [0, 0],
       resolution: 10
     });
     expect(bitbox.getArea()).to.equal(2000);
@@ -88,6 +109,7 @@ lab.experiment('#maxJ', () => {
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 1
     });
     expect(bitbox.maxJ).to.equal(10);
@@ -103,6 +125,7 @@ lab.experiment('#resolution', () => {
       minI: 0, maxI: 20,
       minJ: -10, maxJ: 10,
       ranges: {},
+      origin: [0, 0],
       resolution: 5
     });
     expect(bitbox.resolution).to.equal(5);
