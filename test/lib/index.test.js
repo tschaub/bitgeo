@@ -35,11 +35,10 @@ lab.experiment('and()', () => {
   lab.test('creates the intersection of an array of data', done => {
     const options = {resolution: 0.25};
 
-    const intersection = bitgeo.and([data.world, data.usa, data.mt], options);
+    const intersection = bitgeo.and([data.world, data.usa], options);
 
     let expected = bitgeo(data.world, options);
     expected = expected.and(bitgeo(data.usa, options));
-    expected = expected.and(bitgeo(data.mt, options));
 
     expect(intersection.getArea()).to.equal(expected.getArea());
     expect(intersection.minI).to.equal(expected.minI);
@@ -47,7 +46,7 @@ lab.experiment('and()', () => {
     expect(intersection.maxI).to.equal(expected.maxI);
     expect(intersection.maxJ).to.equal(expected.maxJ);
 
-    expect(intersection.getArea()).to.equal(bitgeo(data.mt, options).getArea());
+    expect(intersection.getArea()).to.equal(bitgeo(data.usa, options).getArea());
     done();
   });
 
