@@ -148,7 +148,7 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(20, 0, 30, 2)).to.equal(BitBox.portions.NONE);
+    expect(bitbox.contains(20, 0, 30, 2)).to.equal(BitBox.NONE);
     done();
   });
 
@@ -164,7 +164,7 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(0, 0, 2, 2)).to.equal(BitBox.portions.ALL);
+    expect(bitbox.contains(0, 0, 2, 2)).to.equal(BitBox.ALL);
     done();
   });
 
@@ -180,7 +180,7 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(5, 0, 20, 3)).to.equal(BitBox.portions.SOME);
+    expect(bitbox.contains(5, 0, 20, 3)).to.equal(BitBox.SOME);
     done();
   });
 
