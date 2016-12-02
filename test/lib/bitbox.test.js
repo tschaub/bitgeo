@@ -133,3 +133,55 @@ lab.experiment('#resolution', () => {
   });
 
 });
+
+lab.experiment('#contains()', () => {
+
+  lab.test('determines if none of the bits are true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(20, 0, 30, 2)).to.equal(BitBox.NONE);
+    done();
+  });
+
+  lab.test('determines if all of the bits are true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(0, 0, 2, 2)).to.equal(BitBox.ALL);
+    done();
+  });
+
+  lab.test('determines if some of the bits are true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(5, 0, 20, 3)).to.equal(BitBox.SOME);
+    done();
+  });
+
+});
