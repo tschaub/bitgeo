@@ -51,3 +51,46 @@ lab.experiment('and()', () => {
   });
 
 });
+
+lab.experiment('NONE', () => {
+
+  lab.test('is returned from contains for no overlap', done => {
+    const options = {resolution: 0.25};
+
+    const world = bitgeo(data.world, options);
+    const contains = world.contains(world.maxI + 1, world.minJ, world.maxI + 10, world.maxJ);
+
+    expect(contains).to.equal(bitgeo.NONE);
+    done();
+  });
+
+});
+
+lab.experiment('SOME', () => {
+
+  lab.test('is returned from contains for partial overlap', done => {
+    const options = {resolution: 0.25};
+
+    const world = bitgeo(data.world, options);
+    const contains = world.contains(world.maxI - 1, world.minJ, world.maxI + 1, world.maxJ);
+
+    expect(contains).to.equal(bitgeo.SOME);
+    done();
+  });
+
+});
+
+lab.experiment('ALL', () => {
+
+  lab.test('is returned from contains for complete overlap', done => {
+    const options = {resolution: 0.25};
+
+    const world = bitgeo(data.world, options);
+    const mt = bitgeo(data.mt, options);
+    const contains = world.contains(mt.minI, mt.minJ, mt.maxI, mt.maxJ);
+
+    expect(contains).to.equal(bitgeo.ALL);
+    done();
+  });
+
+});

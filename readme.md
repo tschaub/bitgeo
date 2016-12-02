@@ -40,6 +40,10 @@ Returns the area of the bitbox where data is present (this will be an integer mu
 
 Test if data is present at the provided location.  The `i` and `j` values are offsets from the origin in terms of the bitbox resolution.  For example, if a bitbox is created with `resolution: 10`, then `bitbox.get(1, 2)` would return `true` if there is data between `[10, 20]` and `[20, 30]` (with upper bounds being exclusive).
 
+#### `bitbox.contains(minI, minJ, maxI, maxJ)`
+
+Determine if all, some, or none of a range of bits are `true`.  Returns `bitgeo.ALL` if all of the bits in the provided range are `true`, `bitgeo.SOME` if some bits are `true` and some are `false`, and `bitgeo.NONE` if all of the bits in the range are `false`.  Ranges are inclusive (both min and max values are tested).
+
 #### `bitbox.or(other)`
 
 Return a bitbox that is the union of two bitboxes (`bitbox` and `other`).
