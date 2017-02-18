@@ -184,4 +184,20 @@ lab.experiment('#contains()', () => {
     done();
   });
 
+  lab.test('determines that some of the bits are true even if the bottom ones are all true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(5, -1, 9, 2)).to.equal(BitBox.SOME);
+    done();
+  });
+
 });
