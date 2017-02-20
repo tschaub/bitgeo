@@ -184,7 +184,7 @@ lab.experiment('#contains()', () => {
     done();
   });
 
-  lab.test('determines that some of the bits are true even if the bottom ones are all true', done => {
+  lab.test('determines that some of the bits are true even if the bottom ones are all true (a)', done => {
     const bitbox = new BitBox({
       minI: 0, maxI: 10,
       minJ: 0, maxJ: 2,
@@ -196,7 +196,119 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(5, -1, 9, 2)).to.equal(BitBox.SOME);
+    expect(bitbox.contains(-1, 0, 11, 0)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are true even if the bottom ones are all true (b)', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, -1, 11, 0)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are true even if the bottom ones are all true (c)', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 0, 11, 1)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are true even if the bottom ones are all true (d)', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, -1, 11, 1)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are if only the middle ones are true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 1, 11, 1)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are if only some of the middle ones are true', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 1, 5, 1)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are if only the top ones are true (a)', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 2, 11, 2)).to.equal(BitBox.SOME);
+    done();
+  });
+
+  lab.test('determines that some of the bits are if only the top ones are true (b)', done => {
+    const bitbox = new BitBox({
+      minI: 0, maxI: 10,
+      minJ: 0, maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 2, 11, 3)).to.equal(BitBox.SOME);
     done();
   });
 
