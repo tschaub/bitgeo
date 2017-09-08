@@ -11,7 +11,7 @@
   "devDependencies": {
     "code": "^4.0.0",
     "eslint": "^4.5.0",
-    "eslint-config-tschaub": "^6.0.0",
+    "eslint-config-tschaub": "^8.0.0",
     "lab": "^14.2.1",
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.0.0"
