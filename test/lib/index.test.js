@@ -1,6 +1,6 @@
 const bitgeo = require('../../lib');
 const expect = require('code').expect;
-const lab = exports.lab = require('lab').script();
+const lab = (exports.lab = require('lab').script());
 
 const data = {
   world: require('../data/world.json'),
@@ -10,8 +10,7 @@ const data = {
 };
 
 lab.experiment('or()', () => {
-
-  lab.test('creates the union of an array of data', done => {
+  lab.test('creates the union of an array of data', () => {
     const options = {resolution: 0.25};
 
     const union = bitgeo.or([data.canada, data.usa, data.mt], options);
@@ -25,14 +24,11 @@ lab.experiment('or()', () => {
     expect(union.minJ).to.equal(expected.minJ);
     expect(union.maxI).to.equal(expected.maxI);
     expect(union.maxJ).to.equal(expected.maxJ);
-    done();
   });
-
 });
 
 lab.experiment('and()', () => {
-
-  lab.test('creates the intersection of an array of data', done => {
+  lab.test('creates the intersection of an array of data', () => {
     const options = {resolution: 0.25};
 
     const intersection = bitgeo.and([data.world, data.usa], options);
@@ -46,43 +42,46 @@ lab.experiment('and()', () => {
     expect(intersection.maxI).to.equal(expected.maxI);
     expect(intersection.maxJ).to.equal(expected.maxJ);
 
-    expect(intersection.getArea()).to.equal(bitgeo(data.usa, options).getArea());
-    done();
+    expect(intersection.getArea()).to.equal(
+      bitgeo(data.usa, options).getArea()
+    );
   });
-
 });
 
 lab.experiment('NONE', () => {
-
-  lab.test('is returned from contains for no overlap', done => {
+  lab.test('is returned from contains for no overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
-    const contains = world.contains(world.maxI + 1, world.minJ, world.maxI + 10, world.maxJ);
+    const contains = world.contains(
+      world.maxI + 1,
+      world.minJ,
+      world.maxI + 10,
+      world.maxJ
+    );
 
     expect(contains).to.equal(bitgeo.NONE);
-    done();
   });
-
 });
 
 lab.experiment('SOME', () => {
-
-  lab.test('is returned from contains for partial overlap', done => {
+  lab.test('is returned from contains for partial overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
-    const contains = world.contains(world.maxI - 1, world.minJ, world.maxI + 1, world.maxJ);
+    const contains = world.contains(
+      world.maxI - 1,
+      world.minJ,
+      world.maxI + 1,
+      world.maxJ
+    );
 
     expect(contains).to.equal(bitgeo.SOME);
-    done();
   });
-
 });
 
 lab.experiment('ALL', () => {
-
-  lab.test('is returned from contains for complete overlap', done => {
+  lab.test('is returned from contains for complete overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
@@ -90,7 +89,5 @@ lab.experiment('ALL', () => {
     const contains = world.contains(mt.minI, mt.minJ, mt.maxI, mt.maxJ);
 
     expect(contains).to.equal(bitgeo.ALL);
-    done();
   });
-
 });

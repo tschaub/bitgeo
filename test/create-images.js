@@ -8,7 +8,7 @@ const images = path.join(__dirname, 'images');
 
 const entries = fs.readdirSync(fixtures);
 
-for (let entry of entries) {
+for (const entry of entries) {
   if (pattern && entry.indexOf(pattern) === -1) {
     continue;
   }

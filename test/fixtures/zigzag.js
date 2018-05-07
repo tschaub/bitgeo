@@ -8,18 +8,21 @@ exports = module.exports = function() {
   }
   ring.push([100, 10]);
   for (let i = 90; i >= 20; i -= 5) {
-    ring.push([i, 20 - (i % 10)]);
+    ring.push([i, 20 - i % 10]);
   }
   ring.push([0, 20]);
   ring.push([10, 10]);
   ring.push([0, 0]);
 
-  return bitgeo({
-    type: 'Polygon',
-    coordinates: [ring]
-  }, {
-    resolution: 0.25
-  });
+  return bitgeo(
+    {
+      type: 'Polygon',
+      coordinates: [ring]
+    },
+    {
+      resolution: 0.25
+    }
+  );
 };
 
 exports.area = 1477.5625;
