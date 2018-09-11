@@ -13,7 +13,7 @@
     "code": "^5.2.0",
     "eslint": "^4.19.1",
     "eslint-config-tschaub": "^10.0.0",
-    "lab": "^15.4.2",
+    "lab": "^16.1.0",
     "pixelmatch": "^4.0.2",
     "pngjs": "^3.3.3"
   },
