@@ -1,6 +1,6 @@
 const bitgeo = require('../../lib');
-const expect = require('code').expect;
-const lab = (exports.lab = require('lab').script());
+const expect = require('@hapi/code').expect;
+const lab = (exports.lab = require('@hapi/lab').script());
 
 const data = {
   world: require('../data/world.json'),

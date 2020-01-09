@@ -1,6 +1,6 @@
 const {sortAndMerge, and, or} = require('../../lib/ranges');
-const expect = require('code').expect;
-const lab = (exports.lab = require('lab').script());
+const expect = require('@hapi/code').expect;
+const lab = (exports.lab = require('@hapi/lab').script());
 
 lab.experiment('sortAndMerge()', () => {
   lab.test('sorts intersections into a flat array of ranges', () => {
