@@ -23,9 +23,9 @@ exports.createPNG = function(bitbox) {
 
   bitbox.forEach((i, j) => {
     if (bitbox.get(i, j)) {
-      var col = i - bitbox.minI;
-      var row = bitbox.maxJ - j;
-      var offset = 4 * (col + row * width);
+      const col = i - bitbox.minI;
+      const row = bitbox.maxJ - j;
+      const offset = 4 * (col + row * width);
       png.data[offset] = 255;
       png.data[offset + 1] = 255;
       png.data[offset + 2] = 255;

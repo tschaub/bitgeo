@@ -8,7 +8,7 @@ exports = module.exports = function() {
   }
   ring.push([100, 10]);
   for (let i = 90; i >= 20; i -= 5) {
-    ring.push([i, 20 - i % 10]);
+    ring.push([i, 20 - (i % 10)]);
   }
   ring.push([0, 20]);
   ring.push([10, 10]);

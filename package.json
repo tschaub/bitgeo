@@ -10,14 +10,21 @@
     "test": "npm run test-lib && npm run test-integration"
   },
   "devDependencies": {
-    "code": "^5.2.0",
-    "eslint": "^4.19.1",
-    "eslint-config-tschaub": "^10.0.0",
-    "lab": "^15.4.2",
-    "pixelmatch": "^4.0.2",
-    "pngjs": "^3.3.3"
+    "@hapi/code": "^8.0.1",
+    "@hapi/lab": "^22.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-tschaub": "^13.1.0",
+    "pixelmatch": "^5.1.0",
+    "pngjs": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tschaub/bitgeo.git"
   },
   "eslintConfig": {
     "extends": "tschaub"
-  }
+  },
+  "files": [
+    "lib/**/*.js"
+  ]
 }

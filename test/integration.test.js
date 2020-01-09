@@ -1,7 +1,7 @@
 const PNG = require('pngjs').PNG;
-const expect = require('code').expect;
+const expect = require('@hapi/code').expect;
+const lab = (exports.lab = require('@hapi/lab').script());
 const fs = require('fs');
-const lab = (exports.lab = require('lab').script());
 const match = require('pixelmatch');
 const path = require('path');
 const util = require('./util');
