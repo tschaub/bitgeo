@@ -1,9 +1,9 @@
+/* eslint-env jest */
+
 const BitBox = require('../../lib/bitbox');
-const expect = require('@hapi/code').expect;
-const lab = (exports.lab = require('@hapi/lab').script());
 
-lab.experiment('constructor', () => {
-  lab.test('creates a bitbox', () => {
+describe('constructor', () => {
+  test('creates a bitbox', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -13,12 +13,12 @@ lab.experiment('constructor', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox).to.be.an.instanceof(BitBox);
+    expect(bitbox).toBeInstanceOf(BitBox);
   });
 });
 
-lab.experiment('#minI', () => {
-  lab.test('provides access to minI', () => {
+describe('#minI', () => {
+  test('provides access to minI', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -28,12 +28,12 @@ lab.experiment('#minI', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.minI).to.equal(0);
+    expect(bitbox.minI).toEqual(0);
   });
 });
 
-lab.experiment('#maxI', () => {
-  lab.test('provides access to maxI', () => {
+describe('#maxI', () => {
+  test('provides access to maxI', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -43,12 +43,12 @@ lab.experiment('#maxI', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.maxI).to.equal(20);
+    expect(bitbox.maxI).toEqual(20);
   });
 });
 
-lab.experiment('#minJ', () => {
-  lab.test('provides access to minJ', () => {
+describe('#minJ', () => {
+  test('provides access to minJ', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -58,12 +58,12 @@ lab.experiment('#minJ', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.minJ).to.equal(-10);
+    expect(bitbox.minJ).toEqual(-10);
   });
 });
 
-lab.experiment('#maxJ', () => {
-  lab.test('provides access to maxJ', () => {
+describe('#maxJ', () => {
+  test('provides access to maxJ', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -73,12 +73,12 @@ lab.experiment('#maxJ', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.maxJ).to.equal(10);
+    expect(bitbox.maxJ).toEqual(10);
   });
 });
 
-lab.experiment('#getArea()', () => {
-  lab.test('provides access to width', () => {
+describe('#getArea()', () => {
+  test('provides access to width', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -91,12 +91,12 @@ lab.experiment('#getArea()', () => {
       origin: [0, 0],
       resolution: 10
     });
-    expect(bitbox.getArea()).to.equal(2000);
+    expect(bitbox.getArea()).toEqual(2000);
   });
 });
 
-lab.experiment('#maxJ', () => {
-  lab.test('provides access to width', () => {
+describe('#maxJ', () => {
+  test('provides access to width', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -106,12 +106,12 @@ lab.experiment('#maxJ', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.maxJ).to.equal(10);
+    expect(bitbox.maxJ).toEqual(10);
   });
 });
 
-lab.experiment('#resolution', () => {
-  lab.test('provides access to resolution', () => {
+describe('#resolution', () => {
+  test('provides access to resolution', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 20,
@@ -121,12 +121,12 @@ lab.experiment('#resolution', () => {
       origin: [0, 0],
       resolution: 5
     });
-    expect(bitbox.resolution).to.equal(5);
+    expect(bitbox.resolution).toEqual(5);
   });
 });
 
-lab.experiment('#contains()', () => {
-  lab.test('determines if none of the bits are true', () => {
+describe('#contains()', () => {
+  test('determines if none of the bits are true', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 10,
@@ -140,10 +140,10 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(20, 0, 30, 2)).to.equal(BitBox.NONE);
+    expect(bitbox.contains(20, 0, 30, 2)).toEqual(BitBox.NONE);
   });
 
-  lab.test('determines if all of the bits are true', () => {
+  test('determines if all of the bits are true', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 10,
@@ -157,10 +157,10 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(0, 0, 2, 2)).to.equal(BitBox.ALL);
+    expect(bitbox.contains(0, 0, 2, 2)).toEqual(BitBox.ALL);
   });
 
-  lab.test('determines if some of the bits are true', () => {
+  test('determines if some of the bits are true', () => {
     const bitbox = new BitBox({
       minI: 0,
       maxI: 10,
@@ -174,166 +174,142 @@ lab.experiment('#contains()', () => {
       origin: [0, 0],
       resolution: 1
     });
-    expect(bitbox.contains(5, 0, 20, 3)).to.equal(BitBox.SOME);
+    expect(bitbox.contains(5, 0, 20, 3)).toEqual(BitBox.SOME);
   });
 
-  lab.test(
-    'determines that some of the bits are true even if the bottom ones are all true (a)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 0, 11, 0)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are true even if the bottom ones are all true (a)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 0, 11, 0)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are true even if the bottom ones are all true (b)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, -1, 11, 0)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are true even if the bottom ones are all true (b)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, -1, 11, 0)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are true even if the bottom ones are all true (c)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 0, 11, 1)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are true even if the bottom ones are all true (c)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 0, 11, 1)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are true even if the bottom ones are all true (d)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, -1, 11, 1)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are true even if the bottom ones are all true (d)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, -1, 11, 1)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are if only the middle ones are true',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 1, 11, 1)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are if only the middle ones are true', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 1, 11, 1)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are if only some of the middle ones are true',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 1, 5, 1)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are if only some of the middle ones are true', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 1, 5, 1)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are if only the top ones are true (a)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 2, 11, 2)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are if only the top ones are true (a)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 2, 11, 2)).toEqual(BitBox.SOME);
+  });
 
-  lab.test(
-    'determines that some of the bits are if only the top ones are true (b)',
-    () => {
-      const bitbox = new BitBox({
-        minI: 0,
-        maxI: 10,
-        minJ: 0,
-        maxJ: 2,
-        ranges: {
-          0: [0, 10],
-          1: [0, 10],
-          2: [0, 10]
-        },
-        origin: [0, 0],
-        resolution: 1
-      });
-      expect(bitbox.contains(-1, 2, 11, 3)).to.equal(BitBox.SOME);
-    }
-  );
+  test('determines that some of the bits are if only the top ones are true (b)', () => {
+    const bitbox = new BitBox({
+      minI: 0,
+      maxI: 10,
+      minJ: 0,
+      maxJ: 2,
+      ranges: {
+        0: [0, 10],
+        1: [0, 10],
+        2: [0, 10]
+      },
+      origin: [0, 0],
+      resolution: 1
+    });
+    expect(bitbox.contains(-1, 2, 11, 3)).toEqual(BitBox.SOME);
+  });
 });
