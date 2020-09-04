@@ -1,6 +1,6 @@
+/* eslint-env jest */
+
 const bitgeo = require('../../lib');
-const expect = require('@hapi/code').expect;
-const lab = (exports.lab = require('@hapi/lab').script());
 
 const data = {
   world: require('../data/world.json'),
@@ -9,8 +9,8 @@ const data = {
   mt: require('../data/mt.json')
 };
 
-lab.experiment('or()', () => {
-  lab.test('creates the union of an array of data', () => {
+describe('or()', () => {
+  test('creates the union of an array of data', () => {
     const options = {resolution: 0.25};
 
     const union = bitgeo.or([data.canada, data.usa, data.mt], options);
@@ -19,16 +19,16 @@ lab.experiment('or()', () => {
     expected = expected.or(bitgeo(data.usa, options));
     expected = expected.or(bitgeo(data.mt, options));
 
-    expect(union.getArea()).to.equal(expected.getArea());
-    expect(union.minI).to.equal(expected.minI);
-    expect(union.minJ).to.equal(expected.minJ);
-    expect(union.maxI).to.equal(expected.maxI);
-    expect(union.maxJ).to.equal(expected.maxJ);
+    expect(union.getArea()).toEqual(expected.getArea());
+    expect(union.minI).toEqual(expected.minI);
+    expect(union.minJ).toEqual(expected.minJ);
+    expect(union.maxI).toEqual(expected.maxI);
+    expect(union.maxJ).toEqual(expected.maxJ);
   });
 });
 
-lab.experiment('and()', () => {
-  lab.test('creates the intersection of an array of data', () => {
+describe('and()', () => {
+  test('creates the intersection of an array of data', () => {
     const options = {resolution: 0.25};
 
     const intersection = bitgeo.and([data.world, data.usa], options);
@@ -36,20 +36,18 @@ lab.experiment('and()', () => {
     let expected = bitgeo(data.world, options);
     expected = expected.and(bitgeo(data.usa, options));
 
-    expect(intersection.getArea()).to.equal(expected.getArea());
-    expect(intersection.minI).to.equal(expected.minI);
-    expect(intersection.minJ).to.equal(expected.minJ);
-    expect(intersection.maxI).to.equal(expected.maxI);
-    expect(intersection.maxJ).to.equal(expected.maxJ);
+    expect(intersection.getArea()).toEqual(expected.getArea());
+    expect(intersection.minI).toEqual(expected.minI);
+    expect(intersection.minJ).toEqual(expected.minJ);
+    expect(intersection.maxI).toEqual(expected.maxI);
+    expect(intersection.maxJ).toEqual(expected.maxJ);
 
-    expect(intersection.getArea()).to.equal(
-      bitgeo(data.usa, options).getArea()
-    );
+    expect(intersection.getArea()).toEqual(bitgeo(data.usa, options).getArea());
   });
 });
 
-lab.experiment('NONE', () => {
-  lab.test('is returned from contains for no overlap', () => {
+describe('NONE', () => {
+  test('is returned from contains for no overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
@@ -60,12 +58,12 @@ lab.experiment('NONE', () => {
       world.maxJ
     );
 
-    expect(contains).to.equal(bitgeo.NONE);
+    expect(contains).toEqual(bitgeo.NONE);
   });
 });
 
-lab.experiment('SOME', () => {
-  lab.test('is returned from contains for partial overlap', () => {
+describe('SOME', () => {
+  test('is returned from contains for partial overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
@@ -76,18 +74,18 @@ lab.experiment('SOME', () => {
       world.maxJ
     );
 
-    expect(contains).to.equal(bitgeo.SOME);
+    expect(contains).toEqual(bitgeo.SOME);
   });
 });
 
-lab.experiment('ALL', () => {
-  lab.test('is returned from contains for complete overlap', () => {
+describe('ALL', () => {
+  test('is returned from contains for complete overlap', () => {
     const options = {resolution: 0.25};
 
     const world = bitgeo(data.world, options);
     const mt = bitgeo(data.mt, options);
     const contains = world.contains(mt.minI, mt.minJ, mt.maxI, mt.maxJ);
 
-    expect(contains).to.equal(bitgeo.ALL);
+    expect(contains).toEqual(bitgeo.ALL);
   });
 });

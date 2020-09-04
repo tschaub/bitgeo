@@ -1,6 +1,6 @@
+/* eslint-env jest */
+
 const PNG = require('pngjs').PNG;
-const expect = require('@hapi/code').expect;
-const lab = (exports.lab = require('@hapi/lab').script());
 const fs = require('fs');
 const match = require('pixelmatch');
 const path = require('path');
@@ -11,20 +11,20 @@ const images = path.join(__dirname, 'images');
 
 const entries = fs.readdirSync(fixtures);
 
-lab.experiment('integration', () => {
+describe('integration', () => {
   for (const entry of entries) {
-    lab.test(entry, () => {
+    test(entry, () => {
       const factory = require(path.join(fixtures, entry));
       const bits = factory();
-      expect(bits.getArea()).to.be.about(factory.area, 1e-5);
+      expect(bits.getArea()).toBeCloseTo(factory.area, 5);
 
       const width = bits.maxI + 1 - bits.minI;
       const height = bits.maxJ + 1 - bits.minJ;
 
       const image = path.join(images, path.basename(entry, '.js') + '.png');
       const expectedPNG = PNG.sync.read(fs.readFileSync(image));
-      expect(width).to.equal(expectedPNG.width);
-      expect(height).to.equal(expectedPNG.height);
+      expect(width).toEqual(expectedPNG.width);
+      expect(height).toEqual(expectedPNG.height);
 
       const actualPNG = util.createPNG(bits);
       const diffPNG = new PNG({width: width, height: height});
@@ -42,7 +42,7 @@ lab.experiment('integration', () => {
         );
         diffPNG.pack().pipe(fs.createWriteStream(diff));
       }
-      expect(mismatch).to.equal(0);
+      expect(mismatch).toEqual(0);
     });
   }
 });
