@@ -26,7 +26,8 @@ describe('prepareLineString()', () => {
         highJ: -6,
         highY: -5.9,
         instruction: 0,
-        direction: directions.UP
+        direction: directions.UP,
+        fillLeft: true
       },
       {
         lowI: 5,
@@ -38,7 +39,8 @@ describe('prepareLineString()', () => {
         highJ: 30,
         highY: 30.9,
         instruction: 0,
-        direction: directions.DOWN
+        direction: directions.DOWN,
+        fillLeft: false
       },
       {
         lowI: 0,
@@ -50,7 +52,8 @@ describe('prepareLineString()', () => {
         highJ: 20,
         highY: 20.9,
         instruction: 0,
-        direction: directions.UP
+        direction: directions.UP,
+        fillLeft: true
       },
       {
         lowI: 10,
@@ -62,7 +65,8 @@ describe('prepareLineString()', () => {
         highJ: 30,
         highY: 30.9,
         instruction: 0,
-        direction: directions.UP
+        direction: directions.UP,
+        fillLeft: true
       }
     ];
 
