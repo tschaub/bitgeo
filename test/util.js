@@ -8,7 +8,6 @@ exports.createPNG = function(bitbox) {
     width: width,
     height: height,
     colorType: 2,
-    fill: true,
     bgColor: {
       red: 0,
       green: 0,
@@ -16,21 +15,20 @@ exports.createPNG = function(bitbox) {
     }
   });
 
-  // force alpha 1 so test work without writing png first
   for (let index = 0, length = png.data.length; index < length; index += 4) {
+    png.data[index] = 100;
+    png.data[index + 1] = 100;
+    png.data[index + 2] = 90;
     png.data[index + 3] = 255;
   }
 
   bitbox.forEach((i, j) => {
-    if (bitbox.get(i, j)) {
-      const col = i - bitbox.minI;
-      const row = bitbox.maxJ - j;
-      const offset = 4 * (col + row * width);
-      png.data[offset] = 255;
-      png.data[offset + 1] = 255;
-      png.data[offset + 2] = 255;
-      png.data[offset + 3] = 255;
-    }
+    const col = i - bitbox.minI;
+    const row = bitbox.maxJ - j;
+    const offset = 4 * (col + row * width);
+    png.data[offset] = 255;
+    png.data[offset + 1] = 255;
+    png.data[offset + 2] = 255;
   });
 
   return png;

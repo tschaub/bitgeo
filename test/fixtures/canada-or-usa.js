@@ -7,4 +7,4 @@ exports = module.exports = function() {
   return bitgeo(canada, options).or(bitgeo(usa, options));
 };
 
-exports.area = 2908.9375;
+exports.area = 2979.125;
