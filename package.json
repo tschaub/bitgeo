@@ -14,7 +14,7 @@
     "eslint-config-tschaub": "^15.0.0",
     "jest": "^29.7.0",
     "pixelmatch": "^5.2.1",
-    "pngjs": "^5.0.0"
+    "pngjs": "^7.0.0"
   },
   "repository": {
     "type": "git",
