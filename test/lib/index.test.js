@@ -1,12 +1,11 @@
-/* eslint-env jest */
-
-const bitgeo = require('../../lib');
+const {describe, expect, test} = require('@jest/globals');
+const bitgeo = require('../../lib/index.js');
 
 const data = {
   world: require('../data/world.json'),
   canada: require('../data/canada.json'),
   usa: require('../data/usa.json'),
-  mt: require('../data/mt.json')
+  mt: require('../data/mt.json'),
 };
 
 describe('or()', () => {
@@ -55,7 +54,7 @@ describe('NONE', () => {
       world.maxI + 1,
       world.minJ,
       world.maxI + 10,
-      world.maxJ
+      world.maxJ,
     );
 
     expect(contains).toEqual(bitgeo.NONE);
@@ -71,7 +70,7 @@ describe('SOME', () => {
       world.maxI - 1,
       world.minJ,
       world.maxI + 1,
-      world.maxJ
+      world.maxJ,
     );
 
     expect(contains).toEqual(bitgeo.SOME);

@@ -1,6 +1,5 @@
-/* eslint-env jest */
-
-const {sortAndMerge, and, or} = require('../../lib/ranges');
+const {describe, expect, test} = require('@jest/globals');
+const {and, or, sortAndMerge} = require('../../lib/ranges.js');
 
 describe('sortAndMerge()', () => {
   test('sorts intersections into a flat array of ranges', () => {
