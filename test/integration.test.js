@@ -1,10 +1,9 @@
-/* eslint-env jest */
-
-const PNG = require('pngjs').PNG;
 const fs = require('fs');
-const match = require('pixelmatch');
 const path = require('path');
-const util = require('./util');
+const {describe, expect, test} = require('@jest/globals');
+const match = require('pixelmatch');
+const PNG = require('pngjs').PNG;
+const util = require('./util.js');
 
 const fixtures = path.join(__dirname, 'fixtures');
 const images = path.join(__dirname, 'images');
@@ -33,12 +32,12 @@ describe('integration', () => {
         expectedPNG.data,
         diffPNG.data,
         width,
-        height
+        height,
       );
       if (mismatch) {
         const diff = path.join(
           images,
-          path.basename(entry, '.js') + '.diff.png'
+          path.basename(entry, '.js') + '.diff.png',
         );
         diffPNG.pack().pipe(fs.createWriteStream(diff));
       }

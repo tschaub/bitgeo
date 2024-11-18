@@ -1,6 +1,6 @@
 const PNG = require('pngjs').PNG;
 
-exports.createPNG = function(bitbox) {
+exports.createPNG = function (bitbox) {
   const width = bitbox.maxI + 1 - bitbox.minI;
   const height = bitbox.maxJ + 1 - bitbox.minJ;
 
@@ -11,8 +11,8 @@ exports.createPNG = function(bitbox) {
     bgColor: {
       red: 0,
       green: 0,
-      blue: 0
-    }
+      blue: 0,
+    },
   });
 
   for (let index = 0, length = png.data.length; index < length; index += 4) {

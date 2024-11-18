@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const util = require('./util');
+const util = require('./util.js');
 
 const pattern = process.argv[2];
 const fixtures = path.join(__dirname, 'fixtures');

@@ -1,8 +1,9 @@
-const bitgeo = require('../../lib/index');
+const bitgeo = require('../../lib/index.js');
 const data = require('../data/gallatin.json');
 
-exports = module.exports = function() {
+module.exports = function () {
   return bitgeo(data, {resolution: 0.005});
 };
 
+exports = module.exports;
 exports.area = 0.788575;

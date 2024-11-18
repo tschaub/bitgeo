@@ -1,7 +1,6 @@
-/* eslint-env jest */
-
-const prepareLineString = require('../../lib/segments').prepareLineString;
-const directions = require('../../lib/segments').directions;
+const {describe, expect, test} = require('@jest/globals');
+const prepareLineString = require('../../lib/segments.js').prepareLineString;
+const directions = require('../../lib/segments.js').directions;
 
 describe('prepareLineString()', () => {
   test('generates flat array of of sorted segments and instructions (bottom to top)', () => {
@@ -10,7 +9,7 @@ describe('prepareLineString()', () => {
       [10.1, 20.9],
       [-5.1, 30.9],
       [5.1, -10.9],
-      [20.1, -5.9]
+      [20.1, -5.9],
     ];
 
     const flattened = prepareLineString(points, 1, [0, 0]);
@@ -27,7 +26,7 @@ describe('prepareLineString()', () => {
         highY: -5.9,
         instruction: 0,
         direction: directions.UP,
-        fillLeft: true
+        fillLeft: true,
       },
       {
         lowI: 5,
@@ -40,7 +39,7 @@ describe('prepareLineString()', () => {
         highY: 30.9,
         instruction: 0,
         direction: directions.DOWN,
-        fillLeft: false
+        fillLeft: false,
       },
       {
         lowI: 0,
@@ -53,7 +52,7 @@ describe('prepareLineString()', () => {
         highY: 20.9,
         instruction: 0,
         direction: directions.UP,
-        fillLeft: true
+        fillLeft: true,
       },
       {
         lowI: 10,
@@ -66,8 +65,8 @@ describe('prepareLineString()', () => {
         highY: 30.9,
         instruction: 0,
         direction: directions.UP,
-        fillLeft: true
-      }
+        fillLeft: true,
+      },
     ];
 
     expect(flattened.segments).toEqual(expected);

@@ -10,18 +10,15 @@
     "test": "npm run test-lib && npm run test-integration"
   },
   "devDependencies": {
-    "eslint": "^7.8.1",
-    "eslint-config-tschaub": "^13.1.0",
-    "jest": "^26.4.2",
+    "eslint": "^9.15.0",
+    "eslint-config-tschaub": "^15.0.0",
+    "jest": "^29.7.0",
     "pixelmatch": "^5.2.1",
     "pngjs": "^5.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/tschaub/bitgeo.git"
-  },
-  "eslintConfig": {
-    "extends": "tschaub"
   },
   "files": [
     "lib/**/*.js"

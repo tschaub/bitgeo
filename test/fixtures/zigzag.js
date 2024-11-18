@@ -1,6 +1,6 @@
-const bitgeo = require('../../lib/index');
+const bitgeo = require('../../lib/index.js');
 
-exports = module.exports = function() {
+module.exports = function () {
   const ring = [];
   ring.push([0, 0]);
   for (let i = 20; i <= 90; i += 5) {
@@ -17,12 +17,13 @@ exports = module.exports = function() {
   return bitgeo(
     {
       type: 'Polygon',
-      coordinates: [ring]
+      coordinates: [ring],
     },
     {
-      resolution: 0.25
-    }
+      resolution: 0.25,
+    },
   );
 };
 
+exports = module.exports;
 exports.area = 1499.5625;

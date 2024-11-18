@@ -1,6 +1,5 @@
-/* eslint-env jest */
-
-const BitBox = require('../../lib/bitbox');
+const {describe, expect, test} = require('@jest/globals');
+const BitBox = require('../../lib/bitbox.js');
 
 describe('constructor', () => {
   test('creates a bitbox', () => {
@@ -11,7 +10,7 @@ describe('constructor', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox).toBeInstanceOf(BitBox);
   });
@@ -26,7 +25,7 @@ describe('#minI', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.minI).toEqual(0);
   });
@@ -41,7 +40,7 @@ describe('#maxI', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.maxI).toEqual(20);
   });
@@ -56,7 +55,7 @@ describe('#minJ', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.minJ).toEqual(-10);
   });
@@ -71,7 +70,7 @@ describe('#maxJ', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.maxJ).toEqual(10);
   });
@@ -86,10 +85,10 @@ describe('#getArea()', () => {
       maxJ: 10,
       ranges: {
         1: [1, 1, 12, 20], // 10 bits
-        3: [2, 10, 15, 15] // 10 bits
+        3: [2, 10, 15, 15], // 10 bits
       },
       origin: [0, 0],
-      resolution: 10
+      resolution: 10,
     });
     expect(bitbox.getArea()).toEqual(2000);
   });
@@ -104,7 +103,7 @@ describe('#maxJ', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.maxJ).toEqual(10);
   });
@@ -119,7 +118,7 @@ describe('#resolution', () => {
       maxJ: 10,
       ranges: {},
       origin: [0, 0],
-      resolution: 5
+      resolution: 5,
     });
     expect(bitbox.resolution).toEqual(5);
   });
@@ -135,10 +134,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(20, 0, 30, 2)).toEqual(BitBox.NONE);
   });
@@ -152,10 +151,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(0, 0, 2, 2)).toEqual(BitBox.ALL);
   });
@@ -169,10 +168,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(5, 0, 20, 3)).toEqual(BitBox.SOME);
   });
@@ -186,10 +185,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 0, 11, 0)).toEqual(BitBox.SOME);
   });
@@ -203,10 +202,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, -1, 11, 0)).toEqual(BitBox.SOME);
   });
@@ -220,10 +219,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 0, 11, 1)).toEqual(BitBox.SOME);
   });
@@ -237,10 +236,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, -1, 11, 1)).toEqual(BitBox.SOME);
   });
@@ -254,10 +253,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 1, 11, 1)).toEqual(BitBox.SOME);
   });
@@ -271,10 +270,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 1, 5, 1)).toEqual(BitBox.SOME);
   });
@@ -288,10 +287,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 2, 11, 2)).toEqual(BitBox.SOME);
   });
@@ -305,10 +304,10 @@ describe('#contains()', () => {
       ranges: {
         0: [0, 10],
         1: [0, 10],
-        2: [0, 10]
+        2: [0, 10],
       },
       origin: [0, 0],
-      resolution: 1
+      resolution: 1,
     });
     expect(bitbox.contains(-1, 2, 11, 3)).toEqual(BitBox.SOME);
   });
