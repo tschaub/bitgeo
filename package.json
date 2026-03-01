@@ -10,10 +10,10 @@
     "test": "npm run test-lib && npm run test-integration"
   },
   "devDependencies": {
-    "eslint": "^9.15.0",
+    "eslint": "^10.0.2",
     "eslint-config-tschaub": "^15.0.0",
     "jest": "^30.0.0",
-    "pixelmatch": "^5.2.1",
+    "pixelmatch": "^7.1.0",
     "pngjs": "^7.0.0"
   },
   "repository": {
